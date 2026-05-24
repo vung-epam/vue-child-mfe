@@ -20,7 +20,7 @@ export default defineConfig({
   },
   build: {
     rollupOptions: {
-      external: ['single-spa', 'single-spa-vue', '@vu/shared'],
+      external: ['single-spa'],
     },
   },
 });
