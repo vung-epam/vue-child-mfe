@@ -1,13 +1,26 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import viteLogo from '../assets/vite.svg'
-import heroImg from '../assets/hero.png'
-import vueLogo from '../assets/vue.svg'
+import heroImg from '@/assets/hero.png';
+import iconsSprite from '@/assets/icons.svg?raw';
+import viteLogo from '@/assets/vite.svg';
+import vueLogo from '@/assets/vue.svg';
+import { ref } from 'vue';
 
-const count = ref(0)
+type ThemePayload =
+  | string
+  | { darkMode?: boolean; locale?: string }
+  | Record<string, unknown>;
+
+const { theme } = defineProps<{ theme?: ThemePayload }>();
+
+const themeLabel =
+  typeof theme === 'string' ? theme : theme ? JSON.stringify(theme) : undefined;
+
+const count = ref(0);
 </script>
 
 <template>
+  <div class="icon-sprite" v-html="iconsSprite" aria-hidden="true"></div>
+
   <section id="center">
     <div class="hero">
       <img :src="heroImg" class="base" width="170" height="179" alt="" />
@@ -17,6 +30,7 @@ const count = ref(0)
     <div>
       <h1>Get started</h1>
       <p>Edit <code>src/App.vue</code> and save to test <code>HMR</code></p>
+      <p v-if="themeLabel">Theme: {{ themeLabel }}</p>
     </div>
     <button type="button" class="counter" @click="count++">
       Count is {{ count }}
@@ -28,7 +42,7 @@ const count = ref(0)
   <section id="next-steps">
     <div id="docs">
       <svg class="icon" role="presentation" aria-hidden="true">
-        <use href="/icons.svg#documentation-icon"></use>
+        <use href="#documentation-icon"></use>
       </svg>
       <h2>Documentation</h2>
       <p>Your questions, answered</p>
@@ -49,7 +63,7 @@ const count = ref(0)
     </div>
     <div id="social">
       <svg class="icon" role="presentation" aria-hidden="true">
-        <use href="/icons.svg#social-icon"></use>
+        <use href="#social-icon"></use>
       </svg>
       <h2>Connect with us</h2>
       <p>Join the Vite community</p>
@@ -57,7 +71,7 @@ const count = ref(0)
         <li>
           <a href="https://github.com/vitejs/vite" target="_blank">
             <svg class="button-icon" role="presentation" aria-hidden="true">
-              <use href="/icons.svg#github-icon"></use>
+              <use href="#github-icon"></use>
             </svg>
             GitHub
           </a>
@@ -65,7 +79,7 @@ const count = ref(0)
         <li>
           <a href="https://chat.vite.dev/" target="_blank">
             <svg class="button-icon" role="presentation" aria-hidden="true">
-              <use href="/icons.svg#discord-icon"></use>
+              <use href="#discord-icon"></use>
             </svg>
             Discord
           </a>
@@ -73,7 +87,7 @@ const count = ref(0)
         <li>
           <a href="https://x.com/vite_js" target="_blank">
             <svg class="button-icon" role="presentation" aria-hidden="true">
-              <use href="/icons.svg#x-icon"></use>
+              <use href="#x-icon"></use>
             </svg>
             X.com
           </a>
@@ -81,7 +95,7 @@ const count = ref(0)
         <li>
           <a href="https://bsky.app/profile/vite.dev" target="_blank">
             <svg class="button-icon" role="presentation" aria-hidden="true">
-              <use href="/icons.svg#bluesky-icon"></use>
+              <use href="#bluesky-icon"></use>
             </svg>
             Bluesky
           </a>
@@ -93,3 +107,17 @@ const count = ref(0)
   <div class="ticks"></div>
   <section id="spacer"></section>
 </template>
+
+<style scoped>
+.icon-sprite {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.icon-sprite :global(svg) {
+  width: 0;
+  height: 0;
+}
+</style>
