@@ -14,6 +14,9 @@ importers:
       single-spa-vue:
         specifier: ^3.0.1
         version: 3.0.1
+      vite-plugin-css-injected-by-js:
+        specifier: ^5.0.1
+        version: 5.0.1(vite@8.0.14(@types/node@24.12.4)(yaml@2.9.0))
       vite-plugin-single-spa:
         specifier: ^2.0.0
         version: 2.0.0(vite@8.0.14(@types/node@24.12.4)(yaml@2.9.0))
@@ -546,6 +549,11 @@ packages:
   unplugin@3.0.0:
     resolution: {integrity: sha512-0Mqk3AT2TZCXWKdcoaufeXNukv2mTrEZExeXlHIOZXdqYoHHr4n51pymnwV8x2BOVxwXbK2HLlI7usrqMpycdg==}
     engines: {node: ^20.19.0 || >=22.12.0}
+
+  vite-plugin-css-injected-by-js@5.0.1:
+    resolution: {integrity: sha512-JSB0jjN4VCKqG7XTUdrwiIl5gA+z2yi/tAl9WHo0X4sdyJ1yrmbLOEjf95TDoDIIuKr4GJIc7lMJG0CT88eEUQ==}
+    peerDependencies:
+      vite: '>8.0.0-0'
 
   vite-plugin-single-spa@2.0.0:
     resolution: {integrity: sha512-fXqaQe9EUf9EU0ilzyCx+Q6xfSeKQP3OZ8Di6ZNMW+XiPTPtqdTiV2jlYHoTdkGTqhSW51ik2xiLje6vI2Hg9w==}
@@ -1094,6 +1102,10 @@ snapshots:
       '@jridgewell/remapping': 2.3.5
       picomatch: 4.0.4
       webpack-virtual-modules: 0.6.2
+
+  vite-plugin-css-injected-by-js@5.0.1(vite@8.0.14(@types/node@24.12.4)(yaml@2.9.0)):
+    dependencies:
+      vite: 8.0.14(@types/node@24.12.4)(yaml@2.9.0)
 
   vite-plugin-single-spa@2.0.0(vite@8.0.14(@types/node@24.12.4)(yaml@2.9.0)):
     dependencies:
