@@ -26,6 +26,9 @@ export default defineConfig(({ mode }) => {
     build: {
       rollupOptions: {
         external: ['single-spa'],
+        sanitizeFileName: (name: string) => {
+          return name.replace(/\s+/g, '-').replace(/[^a-zA-Z0-9_.-]/g, '');
+        },
       },
     },
   };

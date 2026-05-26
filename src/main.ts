@@ -1,4 +1,7 @@
 // import { sharedFunc } from '@vu/shared';
+import Aura from '@primeuix/themes/aura';
+import 'primeicons/primeicons.css';
+import PrimeVue from 'primevue/config';
 import singleSpaVue from 'single-spa-vue';
 import { createApp, h } from 'vue';
 import App from './App.vue';
@@ -18,12 +21,14 @@ const vueLifecycles = singleSpaVue({
   },
   handleInstance: (app) => {
     app.use(router);
+    app.use(PrimeVue, { theme: { preset: Aura } });
   },
 });
 
 const mountVue = () => {
   const app = createApp(App, { theme: { darkMode: false, locale: 'mock' } });
   app.use(router);
+  app.use(PrimeVue, { theme: { preset: Aura } });
   app.mount('#app');
 };
 
