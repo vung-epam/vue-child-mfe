@@ -1,24 +1,20 @@
 <script setup lang="ts">
-import { navigateToUrl } from 'single-spa';
 import styles from './App.module.scss';
 
 type ThemePayload = { darkMode?: boolean; locale?: string };
 
 const props = defineProps<{ theme?: ThemePayload }>();
 
-const navigateAway = (route: string) => {
-  navigateToUrl(route);
-};
+// const navigateAway = (route: string) => {
+//   navigateToUrl(route);
+// };
 </script>
 
 <template>
   <div :class="styles.app">
     <nav :class="styles.nav">
       <RouterLink to="/vue">Vue Home</RouterLink>
-      <RouterLink to="/vue/sub">Sub page</RouterLink>
       <RouterLink to="/vue/users">Users</RouterLink>
-      <a @click.prevent="navigateAway('/welcome')">Welcome</a>
-      <a @click.prevent="navigateAway('/')">Home</a>
     </nav>
     <RouterView v-slot="{ Component }">
       <component :is="Component" :theme="props.theme" />

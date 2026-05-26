@@ -57,9 +57,8 @@ onMounted(fetchUsers);
 <template>
   <section class="users-page">
     <header class="header">
-      <div>
-        <h1>Users</h1>
-        <p>Mock data from dummyjson.com</p>
+      <div class="title-block">
+        <h1>User Directory</h1>
       </div>
       <Button
         label="Reload"
@@ -81,17 +80,12 @@ onMounted(fetchUsers);
       :rows-per-page-options="[10, 20, 50]"
       responsive-layout="scroll"
     >
-      <Column header="User">
+      <Column header="Name">
         <template #body="{ data }">
-          <div class="user-cell">
-            <img :src="data.image" alt="" class="avatar" />
-            <div>
-              <div class="name">{{ fullName(data) }}</div>
-              <div class="email">{{ data.email }}</div>
-            </div>
-          </div>
+          <div class="name">{{ fullName(data) }}</div>
         </template>
       </Column>
+      <Column field="email" header="Email" />
       <Column field="phone" header="Phone" />
       <Column field="age" header="Age" />
       <Column header="Gender">
@@ -113,26 +107,37 @@ onMounted(fetchUsers);
 
 <style scoped>
 .users-page {
-  padding: 24px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 12px;
 }
 
 .header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
+  gap: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.title-block {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-align: left;
 }
 
 .header h1 {
-  margin: 0 0 4px;
+  margin: 0;
+  font-size: 1.5rem;
 }
 
 .header p {
   margin: 0;
   color: #6b7280;
+  font-size: 0.95rem;
 }
 
 .error {
@@ -141,25 +146,7 @@ onMounted(fetchUsers);
   font-weight: 600;
 }
 
-.user-cell {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.avatar {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
 .name {
   font-weight: 600;
-}
-
-.email {
-  font-size: 0.9rem;
-  color: #6b7280;
 }
 </style>
