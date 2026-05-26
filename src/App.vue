@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { navigateToUrl } from 'single-spa';
+import styles from './App.module.scss';
 
 type ThemePayload = { darkMode?: boolean; locale?: string };
 
@@ -11,8 +12,8 @@ const navigateAway = (route: string) => {
 </script>
 
 <template>
-  <div class="vue-app">
-    <nav class="nav">
+  <div class="vue-app" :class="styles.app">
+    <nav :class="styles.nav">
       <RouterLink to="/vue">Vue Home</RouterLink>
       <RouterLink to="/vue/sub">Sub page</RouterLink>
       <RouterLink to="/vue/users">Users</RouterLink>
