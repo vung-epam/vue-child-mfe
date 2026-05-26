@@ -12,7 +12,7 @@ const navigateAway = (route: string) => {
 </script>
 
 <template>
-  <div class="vue-app" :class="styles.app">
+  <div :class="styles.app">
     <nav :class="styles.nav">
       <RouterLink to="/vue">Vue Home</RouterLink>
       <RouterLink to="/vue/sub">Sub page</RouterLink>
