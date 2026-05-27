@@ -25,8 +25,8 @@ const count = ref(0);
   <div v-else-if="isAuthenticated">
     <p>Welcome, {{ user?.name }}!</p>
   </div>
-  <div v-else></div>
-    <p>You are not authenticated. Please log in.</p>
+  <div v-else>
+    <p>You are not authenticated. Please log in in /shared page.</p>
   </div>
   <div class="icon-sprite" v-html="iconsSprite" aria-hidden="true"></div>
   <section id="center">
