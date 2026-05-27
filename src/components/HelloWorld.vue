@@ -3,7 +3,9 @@ import heroImg from '@/assets/hero.png';
 import iconsSprite from '@/assets/icons.svg?raw';
 import viteLogo from '@/assets/vite.svg';
 import vueLogo from '@/assets/vue.svg';
+import { useAuth0 } from '@auth0/auth0-vue';
 import { ref } from 'vue';
+const { isLoading, isAuthenticated, user } = useAuth0();
 
 type ThemePayload =
   | string
@@ -19,8 +21,14 @@ const count = ref(0);
 </script>
 
 <template>
+  <div v-if="isLoading">Loading authentication...</div>
+  <div v-else-if="isAuthenticated">
+    <p>Welcome, {{ user?.name }}!</p>
+  </div>
+  <div v-else></div>
+    <p>You are not authenticated. Please log in.</p>
+  </div>
   <div class="icon-sprite" v-html="iconsSprite" aria-hidden="true"></div>
-
   <section id="center">
     <div class="hero">
       <img :src="heroImg" class="base" width="170" height="179" alt="" />
